@@ -49,10 +49,10 @@ public class Circuit : MonoBehaviour
             if ((currentGateIndex == 0 && looping) || (currentGateIndex == lastGateIndex && !looping))
             {
                 // Finish //
-
                 Timer.Step();
                 Timer.Stop();
                 Timer.Save();
+                gate.ActivateGate(false); //empêche le joueur de re-déclencher la porte ce qui créé un bug et créé 7 steps au lieu de 6 pour le record
             }
             else
             {
