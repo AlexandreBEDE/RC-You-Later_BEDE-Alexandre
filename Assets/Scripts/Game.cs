@@ -21,10 +21,15 @@ public class Game : MonoBehaviour
     private void Gate_OnPassed(Gate gate)
     {
         // First gate passed, disable tutorial.
-        tutorialPanel.SetActive(false);
+        //tutorialPanel.SetActive(false);
+        //Create a security if the panel has already been disabled by the first gate, so it doesn't get enabled again by the next gates.
+        //if (tutorialPanel.activeSelf)
+        //{
+        //    tutorialPanel.SetActive(false);
+        //}
 
-        // Unregister itself.
-        Gate.OnPassed -= Gate_OnPassed;
+        //// Unregister itself.
+        //Gate.OnPassed -= Gate_OnPassed;
     }
 
     private void Update()
@@ -47,6 +52,7 @@ public class Game : MonoBehaviour
 
             Scene currentScene = gameObject.scene;
             SceneManager.LoadScene(currentScene.name);
+            
         }
     }
 }

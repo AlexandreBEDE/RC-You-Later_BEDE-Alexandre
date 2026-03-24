@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using UnityEngine;
 
 public static class Timer
 {
@@ -53,6 +55,30 @@ public static class Timer
     public static void Save()
     {
         // TODO : save our time steps (line 7 of this script) inside a file.
+        string path = Application.dataPath + "/Score.txt";
+
+        // Le temps final est le dernier step enregistré
+        long currentTime = steps[steps.Count - 1];
+
+        // On vérifie s'il y a déjà un score sauvegardé
+        if (File.Exists(path) && !string.IsNullOrEmpty(File.ReadAllText(path)))
+        {
+            string existingJson = File.ReadAllText(path);
+            StepsWrapper existingWrapper = JsonUtility.FromJson<StepsWrapper>(existingJson);
+
+            if (existingWrapper != null && existingWrapper.steps != null && existingWrapper.steps.Count > 0)
+            {
+                // Le temps final sauvegardé est aussi le dernier step
+                long savedTime = existingWrapper.steps[existingWrapper.steps.Count - 1];
+
+                // On sauvegarde seulement si le temps actuel est meilleur
+                if (currentTime >= savedTime) return;
+            }
+        }
+
+        // Aucun record ou nouveau record : on sauvegarde !
+        string json = JsonUtility.ToJson(new StepsWrapper { steps = steps });
+        File.WriteAllText(path, json);
     }
 
     public static void Load()
@@ -60,5 +86,29 @@ public static class Timer
         // TODO : load our time steps from a file (if we have any)
         // and store them inside our steps variable (line 7 of this script)
         // to show them to the player before starting a race.
+        string path = Application.dataPath + "/Score.txt";
+
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+
+            // On vérifie que le fichier n'est pas vide
+            if (string.IsNullOrEmpty(json)) return;
+
+            StepsWrapper wrapper = JsonUtility.FromJson<StepsWrapper>(json);
+
+            // On vérifie que la désérialisation a bien fonctionné
+            if (wrapper == null || wrapper.steps == null) return;
+
+            steps.Clear();
+            steps.AddRange(wrapper.steps);
+        }
+
+    }
+
+    [System.Serializable]
+    public class StepsWrapper
+    {
+        public List<long> steps;
     }
 }
