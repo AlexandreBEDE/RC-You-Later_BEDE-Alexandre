@@ -7,6 +7,8 @@ public static class Timer
 {
     private static readonly Stopwatch stopwatch = new();
     private static readonly List<long> steps = new();
+    private static readonly List<long> savedSteps = new();
+
 
     public static bool IsRunning
     {
@@ -22,10 +24,17 @@ public static class Timer
     {
         get => steps.Count;
     }
+    public static int SavedStepsCount => savedSteps.Count;
+
+    
 
     public static double GetStepElapsedSeconds(int index)
     {
         return steps[index] * 0.001f;
+    }
+    public static double GetSavedStepElapsedSeconds(int index)
+    {
+        return savedSteps[index] * 0.001f;
     }
 
     /// <summary>
@@ -35,6 +44,7 @@ public static class Timer
     {
         stopwatch.Reset();
         steps.Clear();
+        //On ne clear pas les savedSteps car ce sont les steps chargés depuis le fichier, et on veut les garder pour les afficher au joueur même après un reset.
     }
 
     public static void Start()
@@ -102,6 +112,9 @@ public static class Timer
 
             steps.Clear();
             steps.AddRange(wrapper.steps);
+
+            savedSteps.Clear();
+            savedSteps.AddRange(wrapper.steps);
         }
 
     }
