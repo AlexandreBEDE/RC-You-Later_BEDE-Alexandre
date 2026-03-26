@@ -53,11 +53,12 @@ Il y a quelque assets dans le dossier des Models mais tu peux en importer d'autr
 
 Ce que tu a rajouté dans le projet :
 
-- UI montrant le temps de chargement du reload de la scène.
-- Si j'arrive à faire la sauvegarde lors de meilleur temps --> faire en sorte que les temps restent affiché et que les meilleurs temps s'affichent à côté en vert.
+- UI montrant le temps de chargement de la touche R.
+- []Si j'arrive à faire la sauvegarde lors de meilleur temps --> faire en sorte que les temps restent affiché et que les meilleurs temps s'affichent à côté en vert.
 - Décor de la map.
 - retravailler le kart (dérapage et pouvoir reculer).
 - Retravailler l'UI du temps.
+- 
   
 
 
