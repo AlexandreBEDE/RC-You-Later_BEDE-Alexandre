@@ -58,6 +58,7 @@ Ce que tu a rajouté dans le projet :
 - [ ]Décor de la map.
 - [ ]retravailler le kart (dérapage et pouvoir reculer).
 - [ ]Retravailler l'UI du temps.
+- Ajout musique.
 - 
   
 
