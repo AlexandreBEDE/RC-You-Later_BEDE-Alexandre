@@ -18,16 +18,16 @@ J'aimerais que le jeu sauvegarde les étapes du temps du joueur une fois qu'il a
 
 J'ai créé une méthode `Save` dans le script `Timer` (qui se trouve dans le dossier "Assets/Scripts") qui est appelée une fois que le joueur complète un tour complet.
 
-1. **5 Points** : Avec ce qu'on a vu en cours, rajoute le code nécessaire dans la méthode `Save` pour sauvegarder les étapes (la variable `steps` qui se trouve ligne 7) dans un fichier nommé **"score.txt"** sous format texte à la racine du projet (peut importe le dossier, tant que tu t'y retrouve). Tu n'es pas obligé d'utiliser la méthode que l'on a vu en cours.
+1. [X] **5 Points** : Avec ce qu'on a vu en cours, rajoute le code nécessaire dans la méthode `Save` pour sauvegarder les étapes (la variable `steps` qui se trouve ligne 7) dans un fichier nommé **"score.txt"** sous format texte à la racine du projet (peut importe le dossier, tant que tu t'y retrouve). Tu n'es pas obligé d'utiliser la méthode que l'on a vu en cours.
 P.S.: Tu n'es pas obligé de faire un tour complet pour t'assurer que ton code fonctionne : tu peux rajouter un script de test qui appel directement la méthode au lancement de la scène. Pense bien à le retirer à la fin!
 
 J'ai créé une méthode `Load` dans le même script. Elle est appelée automatiquement quand le niveau se charge afin d'afficher le dernier temps sauvegardé avant que le joueur ne se lance.
 
-2. **5 Points** : Avec ce qu'on a vu en cours, rajoute le code nécessaire dans cette méthode afin de charger le dernier temps du joueur qui se trouve dans le fichier **"score.txt"** **si le fichier existe**. Tu n'es pas obligé d'utiliser la méthode que l'on a vu en cours.
+2. [X] **5 Points** : Avec ce qu'on a vu en cours, rajoute le code nécessaire dans cette méthode afin de charger le dernier temps du joueur qui se trouve dans le fichier **"score.txt"** **si le fichier existe**. Tu n'es pas obligé d'utiliser la méthode que l'on a vu en cours.
 
 Points bonus :
 
-3. **2 Points** : Trouve un moyen de ne sauvegarder le temps (et les étapes) du joueur seulement s'il bat le temps final record déjà sauvegardé.
+3. [X] **2 Points** : Trouve un moyen de ne sauvegarder le temps (et les étapes) du joueur seulement s'il bat le temps final record déjà sauvegardé.
 
 4. **4 Points** (pour les fans du code): Vu que c'est un score on aimerait le "protéger" afin que des petits malins ne viennent pas modifier le fichier à la main. Trouve un moyen de protéger le fichier. Un simple encryptage en [Base64](https://zetcode.com/csharp/base64/) ou sauvegarder en [Binaire](https://learn.microsoft.com/fr-fr/dotnet/api/system.io.binarywriter?view=net-8.0) peut suffire pour cet exercice.
 
@@ -53,13 +53,12 @@ Il y a quelque assets dans le dossier des Models mais tu peux en importer d'autr
 
 Ce que tu a rajouté dans le projet :
 
-- [ ]UI montrant le temps de chargement de la touche R.
-- [ ]Si j'arrive à faire la sauvegarde lors de meilleur temps --> faire en sorte que les temps restent affiché et que les meilleurs temps s'affichent à côté en vert.
-- [ ]Décor de la map.
-- [ ]retravailler le kart (dérapage et pouvoir reculer).
+- [X]UI montrant le temps de chargement de la touche R.
+- [X]Si j'arrive à faire la sauvegarde lors de meilleur temps --> faire en sorte que les temps restent affiché et que les meilleurs temps s'affichent à côté en vert.
+- [ ]Décor de la map(lights/assets).
+- [X]Un son se joue lorsque meilleur temps et lorsque mauvais temps.
 - [ ]Retravailler l'UI du temps.
-- Ajout musique.
-- 
+- [X]Ajout musique.
   
 
 
