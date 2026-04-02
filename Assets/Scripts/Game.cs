@@ -2,20 +2,33 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
     [SerializeField]
     private GameObject tutorialPanel = null;
+    [SerializeField] private Slider restartSlider = null;
 
-    private readonly float restartInputHoldTime = 0.25f;
+    private readonly float restartInputHoldTime = 0.35f;
 
     private float currentRestartInputHoldTime = 0.0f;
+
+    public AudioManager audioManager;
 
     private void Start()
     {
         // Register to OnGatePassed event.
         Gate.OnPassed += Gate_OnPassed;
+
+        audioManager.PlayClip("Music");
+        // On initialise le slider 
+        if (restartSlider != null)
+        {
+            restartSlider.minValue = 0.0f;
+            restartSlider.maxValue = restartInputHoldTime;
+            restartSlider.value = 0.0f;
+        }
     }
 
     private void Gate_OnPassed(Gate gate)
@@ -40,10 +53,17 @@ public class Game : MonoBehaviour
         if (restartKey.isPressed)
         {
             currentRestartInputHoldTime += Time.deltaTime;
+            audioManager.PlayClip("Music");
         }
         else
         {
             currentRestartInputHoldTime = 0.0f;
+        }
+
+        // mise a jour du slider
+        if (restartSlider != null)
+        {
+            restartSlider.value = currentRestartInputHoldTime;
         }
 
         if (currentRestartInputHoldTime >= restartInputHoldTime)

@@ -109,12 +109,14 @@ public static class Timer
 
             // On vérifie que la désérialisation a bien fonctionné
             if (wrapper == null || wrapper.steps == null) return;
+            {
+                // mis en commentaire pour éviter que le son "bad time" soit joué dès le lancement
+                //steps.Clear();
+                //steps.AddRange(wrapper.steps);
 
-            steps.Clear();
-            steps.AddRange(wrapper.steps);
-
-            savedSteps.Clear();
-            savedSteps.AddRange(wrapper.steps);
+                savedSteps.Clear();
+                savedSteps.AddRange(wrapper.steps);
+            }
         }
 
     }

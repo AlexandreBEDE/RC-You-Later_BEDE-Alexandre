@@ -1,10 +1,14 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class TimerLabel : MonoBehaviour
 {
     private TextMeshProUGUI label = null;
+
+    [SerializeField] AudioManager audioManager = null;
+    private int lastPlayedStepIndex = -1;
 
     private void Awake()
     {
@@ -16,6 +20,11 @@ public class TimerLabel : MonoBehaviour
         string text = $"Time: {Timer.ElapsedSeconds:F3} s";
         int stepsCount = Timer.StepsCount;
         int savedStepsCount = Timer.SavedStepsCount;
+
+        if (stepsCount == 0)
+        {
+            lastPlayedStepIndex = -1;
+        }
 
         for (int index = 0; index < stepsCount; index++)
         {
@@ -29,9 +38,23 @@ public class TimerLabel : MonoBehaviour
                 double diff = currentStep - savedStep;
 
                 if (diff < 0)
+                {
                     line += $" <color=green>({diff:F3})</color>"; // meilleur temps couleur verte
+                    if (index > lastPlayedStepIndex) 
+                    {
+                        audioManager.PlayClip("GoodTime");
+                        lastPlayedStepIndex = index;
+                    }
+                }
                 else
+                {
                     line += $" <color=red>(+{diff:F3})</color>"; // moins bon temps couleur rouge
+                    if (index > lastPlayedStepIndex)
+                    {
+                        audioManager.PlayClip("BadTime");
+                        lastPlayedStepIndex = index;
+                    }
+                }
             }
 
             text += line;
