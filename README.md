@@ -54,10 +54,9 @@ Il y a quelque assets dans le dossier des Models mais tu peux en importer d'autr
 Ce que tu a rajouté dans le projet :
 
 - [X] UI montrant le temps de chargement de la touche R.
-- [X] Si j'arrive à faire la sauvegarde lors de meilleur temps --> faire en sorte que les temps restent affiché et que les meilleurs temps s'affichent à côté en vert.
-- [ ] Décor de la map(lights/assets).
+- [X] Si j'arrive à faire la sauvegarde lors de meilleur temps --> faire en sorte que les temps restent affiché et que les meilleurs temps s'affichent à côté en vert et en rouge.
+- [X] Décor de la map(lights/assets).
 - [X] Un son se joue lorsque meilleur temps et lorsque mauvais temps.
-- [ ] Retravailler l'UI du temps.
 - [X] Ajout musique.
   
 
