@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip audioClip_2;
     public AudioClip audioClip_3;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
         if (clipName == "Music")
         {
             audioSource.clip = audioClip_1;
-            audioSource.volume = 0.1f; // Adjust the volume as needed (0.0f to 1.0f)
+            audioSource.volume = 0.1f;
             audioSource.Play();
         }
     }
